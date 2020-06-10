@@ -21,6 +21,9 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
       - run:
+          name: Install JUnit coverage reporter
+          command: yarn add --dev jest-junit
+      - run:
           name: Run tests with JUnit as reporter
           command: npx jest --ci --runInBand --reporters=default --reportres=jest-junit
           environment:
